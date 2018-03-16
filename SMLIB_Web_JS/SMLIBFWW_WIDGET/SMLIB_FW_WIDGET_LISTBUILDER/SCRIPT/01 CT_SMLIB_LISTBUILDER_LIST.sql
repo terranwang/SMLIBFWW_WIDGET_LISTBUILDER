@@ -1,0 +1,14 @@
+
+CREATE TABLE [dbo].[SMLIB_LISTBUILDER_LIST](
+	[LIST_ID] [numeric](18, 0) IDENTITY(1,1) NOT NULL,
+	[LIST_NAME] [nvarchar](500) NULL,
+	[LIST_DESCRIPTION] [nvarchar](max) NULL,
+	[LIST_TYPE] [nvarchar](50) NULL,
+	[LIST_CREATOR] [numeric](28, 2) NULL,
+	[LIST_CREATION] [datetime] NULL,
+	[LIST_CREATOR_NAME] [nvarchar](max) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+/*SQLCOMMAND*/
+
+/*END*/

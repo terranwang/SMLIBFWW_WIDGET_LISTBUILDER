@@ -1,0 +1,17 @@
+CREATE TABLE [dbo].[SMLIB_LISTBUILDER_SHARED](
+	[SHARED_ID] [numeric](18, 0) IDENTITY(1,1) NOT NULL,
+	[SHARED_LIST_ID] [numeric](18, 0) NULL,
+	[SHARED_INDEX] [int] NULL,
+	[SHARED_REF_ID] [nvarchar](500) NULL,
+	[SHARED_NAME] [nvarchar](500) NULL,
+	[SHARED_EMAIL] [nvarchar](500) NULL,
+	[SHARED_TYPE] [nvarchar](50) NULL,
+	[SHARED_IMAGE] [nvarchar](max) NULL,
+	[SHARED_CREATOR] [numeric](28, 2) NULL,
+	[SHARED_CREATION] [datetime] NULL,
+	[SHARED_CREATOR_NAME] [nvarchar](max) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+/*SQLCOMMAND*/
+
+/*END*/

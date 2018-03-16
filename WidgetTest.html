@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript" src="SMLIB_Web_JS\BootStrap\jquery.js"></script>
+    <script type="text/javascript" src="SMLIB_Web_JS\BootStrap\bootstrap.js"></script>
+    <script type="text/javascript" src="SMLIB_Web_JS\BootStrap\bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="SMLIB_Web_JS\BootStrap\bootstrap-switch.js"></script>
+    <script type="text/javascript" src="SMLIB_Web_JS\BootStrap\jquery.tzCheckbox.js"></script>
+    <script type="text/javascript" src="SMLIB_Web_JS\BootStrap\freewall.js"></script>
+    <link rel=StyleSheet href="CSS/bootstrap - Smart Library.css" type="text/css">
+    <link rel=StyleSheet href="CSS/font-awesome.css" type="text/css">
+    <link rel=StyleSheet href="CSS/datepicker.css" type="text/css">
+    <link rel=StyleSheet href="CSS/switch.css" type="text/css">
+    <link rel=StyleSheet href="CSS/jquery.tzCheckbox.css" type="text/css">
+    <script type="text/javascript">
+
+
+        var mouse = { x: 0, y: 0 };
+        document.addEventListener('mousemove', function (e) {
+            mouse.x = e.clientX || e.pageX;
+            mouse.y = e.clientY || e.pageY
+        }, false);
+
+
+    var SMLIB_VERSION_NUMBER="3.0.0";
+    function AttachWidgetContentList(LISTJSON) {
+        if (LISTJSON != null) {
+            for (var index = 0; index < LISTJSON.ITEMS.length; index++) {
+                switch (LISTJSON.ITEMS[index].TYPE.toUpperCase()) {
+                    case "WIDGET":
+                        break;
+                    case "CSS":
+                        $('head').append('<LINK REL=StyleSheet HREF="SMLIB_Web_JS/SMLIBFWW_WIDGET/SMLIB_FW_WIDGET_' + LISTJSON.ITEMS[index].WIDGETNAME + '/' + LISTJSON.ITEMS[index].TYPE + '/' + LISTJSON.ITEMS[index].WIDGETELEMENT + '.' + LISTJSON.ITEMS[index].FILETYPE + '?SMLIBVersion=' + SMLIB_VERSION_NUMBER + '&WIDGETVersion=' + LISTJSON.ITEMS[index].VERSION + '" TYPE="text/css">');
+                        break;
+                    default:
+                        $('head').append('<script type="text/javascript" src="SMLIB_Web_JS/SMLIBFWW_WIDGET/SMLIB_FW_WIDGET_' + LISTJSON.ITEMS[index].WIDGETNAME + '/' + LISTJSON.ITEMS[index].TYPE + '/' + LISTJSON.ITEMS[index].WIDGETELEMENT + '.' + LISTJSON.ITEMS[index].FILETYPE + '?SMLIBVersion=' + SMLIB_VERSION_NUMBER + '&WIDGETVersion=' + LISTJSON.ITEMS[index].VERSION + '" />');
+                        break;
+                }
+            }
+        }
+
+    }
+    </script>
+   
+    <script type="text/javascript" src="SMLIB_Web_JS\SMLIBFWW_WIDGET\SMLIB_FW_WIDGET_LISTBUILDER\LOADER\SMLIBFWW_LISTBUILDER_L.js"></script>
+
+</head>
+<body style="overflow:hidden;">
+    <script type="text/javascript">
+        document.writeln('<div id="main" style="width:' + window.innerWidth + 'px;height:' + window.innerHeight + 'px;">  </div>');
+        $(document).ready(function () {          
+
+
+            var ListBuilderOption = $.fn.smlib_listbuilder_option();
+            ListBuilderOption.position = 'relative';
+            ListBuilderOption.width = 300;
+            ListBuilderOption.height = 300;
+            ListBuilderOption.top = 20;
+            ListBuilderOption.left = 20;
+            ListBuilderOption.additional_css = '';
+            ListBuilderOption.loadingimg = 'http://vcld.fsdcmel.librarysolutions.com.au/VCLD_FS_TEST/img/loadingblack.gif';
+            ListBuilderOption.bgfile = '';            
+           
+            ListBuilderOption.webroot = "";
+            ListBuilderOption.widgetroot = "SMLIB_Web_JS/SMLIBFWW_WIDGET/SMLIB_FW_WIDGET_LISTBUILDER/";
+            ListBuilderOption.titleroot = "SmartLibraryWeb/SmartLibraryPageLoader.aspx?PageName=TITLE_DETAIL&BookID=";
+            ListBuilderOption.patronroot = "SmartLibraryWeb/SmartLibraryPageLoader.aspx?PageName=PATRON_PROFILE&PatronBarcode=";
+            ListBuilderOption.loadbuilderservice = "SMLIB_Web_JS/SMLIBFWW_WIDGET/SMLIB_FW_WIDGET_LISTBUILDER/SERVICE/SMLIBFWW_LISTBUILDER_S.asmx/LoadListBuilder";
+            ListBuilderOption.savelistservice = "SMLIB_Web_JS/SMLIBFWW_WIDGET/SMLIB_FW_WIDGET_LISTBUILDER/SERVICE/SMLIBFWW_LISTBUILDER_S.asmx/SaveList";
+            ListBuilderOption.deletelistservice = "SMLIB_Web_JS/SMLIBFWW_WIDGET/SMLIB_FW_WIDGET_LISTBUILDER/SERVICE/SMLIBFWW_LISTBUILDER_S.asmx/DeleteList";
+            ListBuilderOption.saveitemservice = "SMLIB_Web_JS/SMLIBFWW_WIDGET/SMLIB_FW_WIDGET_LISTBUILDER/SERVICE/SMLIBFWW_LISTBUILDER_S.asmx/SaveItem";
+            ListBuilderOption.deleteitemservice = "SMLIB_Web_JS/SMLIBFWW_WIDGET/SMLIB_FW_WIDGET_LISTBUILDER/SERVICE/SMLIBFWW_LISTBUILDER_S.asmx/DeleteItem";
+            ListBuilderOption.reorderitemservice = "SMLIB_Web_JS/SMLIBFWW_WIDGET/SMLIB_FW_WIDGET_LISTBUILDER/SERVICE/SMLIBFWW_LISTBUILDER_S.asmx/ReorderItem";
+            ListBuilderOption.savesharedemailservice = "SMLIB_Web_JS/SMLIBFWW_WIDGET/SMLIB_FW_WIDGET_LISTBUILDER/SERVICE/SMLIBFWW_LISTBUILDER_S.asmx/SaveShareItem";
+            ListBuilderOption.deletesharedemailservice = "SMLIB_Web_JS/SMLIBFWW_WIDGET/SMLIB_FW_WIDGET_LISTBUILDER/SERVICE/SMLIBFWW_LISTBUILDER_S.asmx/DeleteShareItem";
+            ListBuilderOption.getitemdetailservice = "SMLIB_Web_JS/SMLIBFWW_WIDGET/SMLIB_FW_WIDGET_LISTBUILDER/SERVICE/SMLIBFWW_LISTBUILDER_S.asmx/GetItemDetail";
+            ListBuilderOption.emailsharedemailservice = "SMLIB_Web_JS/SMLIBFWW_WIDGET/SMLIB_FW_WIDGET_LISTBUILDER/SERVICE/SMLIBFWW_LISTBUILDER_S.asmx/EmailShareItem";
+            ListBuilderOption.youtubesearchservice = "https://www.googleapis.com/youtube/v3/search";
+            ListBuilderOption.youtubesearchkey = "AIzaSyAfu3N-LFqCIFB4-WVrtM8deSDCsWAhi0A";
+            ListBuilderOption.booksearchservice = "SMLIB_Web_JS/SMLIBFWW_WIDGET/SMLIB_FW_WIDGET_LISTBUILDER/SERVICE/SMLIBFWW_LISTBUILDER_S.asmx/SearchBookByKeyword";
+            ListBuilderOption.filesearchservice = "SMLIB_Web_JS/SMLIBFWW_WIDGET/SMLIB_FW_WIDGET_LISTBUILDER/SERVICE/SMLIBFWW_LISTBUILDER_S.asmx/SearchFileByKeyword";
+            var ListBuilderCreate = $("#main").smlib_listbuilder_create(ListBuilderOption);
+            ListBuilderCreate.smlibLoadBuilder();
+          
+        });
+    </script>
+</body>
+</html>
